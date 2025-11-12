@@ -37,4 +37,5 @@ jobs:
             --registry-username ${{ secrets.ACR_USERNAME }} \
             --registry-password ${{ secrets.ACR_PASSWORD }} \
             --dns-name-label react-app-${{ github.run_number }} \
-            --ports 80
+            --ports 80 \
+            --os-type Linux
