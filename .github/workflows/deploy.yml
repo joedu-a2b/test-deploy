@@ -27,12 +27,14 @@ jobs:
           docker build -t ${{ secrets.ACR_NAME }}.azurecr.io/react-app:${{ github.sha }} .
           docker push ${{ secrets.ACR_NAME }}.azurecr.io/react-app:${{ github.sha }}
 
-      - name: Deploy to ACI
+      - name: Deploy to Azure Container Instance
         run: |
           az container create \
             --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
             --name react-app-container \
             --image ${{ secrets.ACR_NAME }}.azurecr.io/react-app:${{ github.sha }} \
             --registry-login-server ${{ secrets.ACR_NAME }}.azurecr.io \
+            --registry-username ${{ secrets.ACR_USERNAME }} \
+            --registry-password ${{ secrets.ACR_PASSWORD }} \
             --dns-name-label react-app-${{ github.run_number }} \
             --ports 80
