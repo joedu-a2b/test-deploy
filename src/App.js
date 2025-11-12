@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h3>Web Telop CICD testing 2025 -1</h3>
+        <h3>Web Telop CICD testing 2025</h3>
       </header>
     </div>
   );
